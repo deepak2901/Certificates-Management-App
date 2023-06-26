@@ -11,20 +11,23 @@ export const signup = async (userData) => {
   }
 };
 
-export const login = async (userData) => {
-    try {
-        const response = await axios.post(`${API_BASE_URL}/signin`, userData);
-        return response.data;
-    } catch (error) {
-        throw new Error(`Error while logging in: ${error.response.data}`);
-    }
+export const signin = async (userData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/signin`, userData);
+    return response.data;
+  } catch (error) {
+    throw new Error(`Error while logging in: ${error.response.data}`);
+  }
 };
 
 export const forgetpassword = async (userData) => {
-    try {
-        const response = await axios.post(`${API_BASE_URL}/forget-password`, userData);
-        return response.data;
-    } catch (error) {
-        throw new Error(`Error while logging in: ${error.response.data}`);
-    }
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/forget-password`,
+      userData
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(`Error while logging in: ${error.response.data}`);
+  }
 };

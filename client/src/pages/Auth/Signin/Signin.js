@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../../services/authService";
+import { signin } from "../../../services/authService";
 
 const Signin = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -52,7 +53,8 @@ const Signin = () => {
     }
 
     try {
-      await login({ email, password });
+      const data = await signin({ email, password });
+      console.log(data.stsTokenManager.accessToken);
       console.log("Email:", email);
       console.log("Password:", password);
       console.log("Login Successful!");

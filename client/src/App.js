@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage/Homepage';
@@ -9,9 +10,9 @@ import ForgetPassword from './pages/Auth/Forgetpassword/Forgetpassword';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage />}/>
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -19,6 +20,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
