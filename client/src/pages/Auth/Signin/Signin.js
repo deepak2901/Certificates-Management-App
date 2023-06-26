@@ -54,14 +54,24 @@ const Signin = () => {
 
     try {
       const data = await signin({ email, password });
-      console.log(data.stsTokenManager.accessToken);
-      console.log("Email:", email);
-      console.log("Password:", password);
-      console.log("Login Successful!");
-      // Reset the form
-      setEmail("");
-      setPassword("");
-      navigate("/");
+
+      if (data) {
+        const accessToken = data.stsTokenManager.accessToken;
+        const userId = data.uid;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("userId", userId);
+        
+        console.log("Login Successful!");
+
+        //Reset the form
+        setEmail("");
+        setPassword("");
+        navigate("/");
+
+        return data;
+      } else {
+        throw new Error(data.error);
+      }
     } catch (error) {
       console.error("Error signing up:", error.message);
     }
@@ -75,7 +85,7 @@ const Signin = () => {
         alignItems: "center",
         maxWidth: 300,
         margin: "auto",
-        marginTop: '100px',
+        marginTop: "100px",
         padding: 10,
         border: "1px solid #ccc",
         borderRadius: 4,

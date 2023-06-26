@@ -7,8 +7,27 @@ import Cards from "../../components/Cards";
 import UploadIcon from "@mui/icons-material/Upload";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { uploadFile, fetchFiles } from "../../services/uploadFilesService";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { styled } from "@mui/system";
+
+const StyledFileInput = styled("input")({
+  display: "none",
+});
+
+const StyledButton = styled(Button)({
+  margin: "40px",
+  padding: "10px",
+  height: "38px",
+  color: "#0E8388",
+  borderColor: "#0E8388",
+  "&:hover": {
+    color: "white",
+    backgroundColor: "#2E4F4F",
+    borderColor: "#2E4F4F",
+  },
+});
 
 const Homepage = () => {
   const [text] = useTypewriter({
@@ -18,11 +37,11 @@ const Homepage = () => {
     deleteSpeed: 10,
     delaySpeed: 2000,
   });
-  
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileList, setFileList] = useState([]);
   const [showCards, setShowCards] = useState(false);
- 
+
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -33,7 +52,7 @@ const Homepage = () => {
         await uploadFile(selectedFile);
         console.log("File uploaded successfully");
         toast.success("File uploaded successfully");
-        fetchExistingFiles()
+        fetchExistingFiles();
       } else {
         console.error("No file selected");
         toast.error("No file selected");
@@ -63,14 +82,16 @@ const Homepage = () => {
 
   return (
     <>
-    <ToastContainer style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  }}/>
+      <ToastContainer
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
       <Box textAlign="center" py={8}>
         <Typography
           variant="h4"
@@ -122,8 +143,8 @@ const Homepage = () => {
           document management while ensuring the highest level of security for
           your valuable files. Seamlessly integrate with popular cloud storage
           platforms and enjoy a mobile and desktop application for easy access.
-          <br/>
-          <br/>
+          <br />
+          <br />
           Experience the future of certificate management with{" "}
           <span style={{ fontFamily: "cursive" }}>Skill.docs</span>.
         </Typography>
@@ -135,7 +156,7 @@ const Homepage = () => {
           alignItems: "flex-start",
         }}
       >
-        <input type="file" style={{
+        {/* <input type="file" style={{
             margin: "40px",
             padding: "10px",
             color: "#0E8388",
@@ -145,7 +166,11 @@ const Homepage = () => {
               backgroundColor: "#2E4F4F",
               borderColor: "#2E4F4F",
             },
-          }} onChange={handleFileChange} />
+          }} onChange={handleFileChange} /> */}
+        <StyledButton variant="outlined" component="label" startIcon={<AttachFileIcon />}>
+          {selectedFile ? selectedFile.name : "Choose a file to upload..."}
+          <StyledFileInput type="file" onChange={handleFileChange} />
+        </StyledButton>
         <Button
           sx={{
             margin: "40px",
