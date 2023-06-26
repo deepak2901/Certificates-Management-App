@@ -36,8 +36,18 @@ exports.signin = async (req, res) => {
   }
 
   signInWithEmailAndPassword(auth, req.body.email, req.body.password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       const user = userCredential.user;
+      // const admin = await getUserByEmail(auth, 'deepak.kondapalli29@gmail.com');
+
+      // if(admin.emailVerified) {
+      //   // Check if the signed-in user is an admin
+      //   if (user.email === admin.email) {
+      //     // Add custom claim for admin role
+      //     await setCustomUserClaims(auth, user.uid, { admin: true });
+      //   }
+      // }
+
       return res.status(201).json(user);
     })
     .catch((error) => {

@@ -2,14 +2,17 @@ const { initializeApp } = require("firebase/app");
 const { getAuth } = require("firebase/auth");
 const { getFirestore } = require("firebase/firestore");
 const { getStorage } = require("firebase/storage");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJyWHMeVHao9aJfToBb3Gu6hTEnZHmhqU",
-  authDomain: "certificates-monitoring-tool.firebaseapp.com",
-  projectId: "certificates-monitoring-tool",
-  storageBucket: "certificates-monitoring-tool.appspot.com",
-  messagingSenderId: "937643208810",
-  appId: "1:937643208810:web:6b3cddcc7cf306ee1ada13",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SERVER_ID,
+  appId: process.env.APP_ID,
 };
 
 const firebase = initializeApp(firebaseConfig);

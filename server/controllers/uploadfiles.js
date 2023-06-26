@@ -11,6 +11,11 @@ const giveCurrentDateTime = () => {
 
 exports.uploadFiles = async (req, res) => {
   try {
+    // const user = req.user; // Assuming you have middleware to authenticate and populate the user object
+    // if (user.admin) {
+    //   return res.status(403).json({ message: "Admins are not allowed to upload files." });
+    // }
+
     const dateTime = giveCurrentDateTime();
     const storageRef = ref(storage, `files/${req.file.originalname + "       " + dateTime}`);
     const metadata = {
