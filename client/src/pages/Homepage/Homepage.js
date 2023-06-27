@@ -7,7 +7,7 @@ import Cards from "../../components/Cards";
 import UploadIcon from "@mui/icons-material/Upload";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { uploadFile, fetchFiles } from "../../services/uploadFilesService";
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { styled } from "@mui/system";
@@ -156,18 +156,11 @@ const Homepage = () => {
           alignItems: "flex-start",
         }}
       >
-        {/* <input type="file" style={{
-            margin: "40px",
-            padding: "10px",
-            color: "#0E8388",
-            borderColor: "#0E8388",
-            "&:hover": {
-              color: "white",
-              backgroundColor: "#2E4F4F",
-              borderColor: "#2E4F4F",
-            },
-          }} onChange={handleFileChange} /> */}
-        <StyledButton variant="outlined" component="label" startIcon={<AttachFileIcon />}>
+        <StyledButton
+          variant="outlined"
+          component="label"
+          startIcon={<AttachFileIcon />}
+        >
           {selectedFile ? selectedFile.name : "Choose a file to upload..."}
           <StyledFileInput type="file" onChange={handleFileChange} />
         </StyledButton>

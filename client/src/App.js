@@ -7,6 +7,9 @@ import Signup from './pages/Auth/Signup/Signup';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ForgetPassword from './pages/Auth/Forgetpassword/Forgetpassword';
 import ProtectedRoute from './pages/ProtectedRoute';
+import AboutUsPage from './pages/AboutUs/AboutUs';
+import ServicesPage from './pages/Services/Services';
+import ContactUsForm from './pages/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           path="/dashboard"
           element={<ProtectedRoute element={<Dashboard />} />}
         />
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contactus" element={<ContactUsForm />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
       </Routes>
     </div>
