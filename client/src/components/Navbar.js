@@ -61,9 +61,9 @@ const NavBar = () => {
                 display: { xs: "none", md: "flex", justifyContent: "flex-end" },
               }}
             >
-              <Button color="inherit">About Us</Button>
-              <Button color="inherit">Services</Button>
-              <Button color="inherit">Contact Us</Button>
+              <Button color="inherit" component={Link} to="/aboutus">About Us</Button>
+              <Button color="inherit" component={Link} to="/services">Services</Button>
+              <Button color="inherit" component={Link} to="/contactus">Contact Us</Button>
             </Box>
             <IconButton
               size="large"
